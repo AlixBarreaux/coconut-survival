@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Textures/plam_tree.png" type="Texture" id=1]
+[ext_resource path="res://NaturalResources/NaturalResource.tscn" type="PackedScene" id=2]
+[ext_resource path="res://NaturalResources/Trees/Palm Tree/PalmTree.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 370 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 200, 10 )
+
+[node name="PalmTree" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, -370 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 1 )
+offset = Vector2( -45, -370 )
+
+[node name="CoconutRetainer" type="StaticBody2D" parent="." index="2"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoconutRetainer" index="0"]
+position = Vector2( 0, -450.009 )
+shape = SubResource( 2 )
+
+[node name="NaturalResourceDetector" type="Area2D" parent="." index="3"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NaturalResourceDetector" index="0"]
+position = Vector2( 0, -370 )
+shape = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+[connection signal="area_entered" from="NaturalResourceDetector" to="." method="_on_NaturalResourceDetector_area_entered"]

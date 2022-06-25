@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pickaxe_mine.wav-84d7f103778f9277b8b1dbe6b76e34ec.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Pickaxe/pickaxe_mine.wav"
+dest_files=[ "res://.import/pickaxe_mine.wav-84d7f103778f9277b8b1dbe6b76e34ec.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

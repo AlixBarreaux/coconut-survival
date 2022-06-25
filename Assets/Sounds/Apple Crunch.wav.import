@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Apple Crunch.wav-b5de541a10d38c66fd0a4cfadf8e45a5.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Apple Crunch.wav"
+dest_files=[ "res://.import/Apple Crunch.wav-b5de541a10d38c66fd0a4cfadf8e45a5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

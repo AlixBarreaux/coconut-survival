@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/Main Menu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Themes/main_theme.tres" type="Theme" id=2]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
+color = Color( 0.133333, 0.141176, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "HOW TO PLAY:
+Go next to a tree or rock and stop moving to gather it.
+Coconuts heal you. Stay alive as long as you can. 
+
+Xbox/PS4 supported. Other controllers may work but 
+the buttons used may be different in game.
+
+MOVEMENTS: Use A/Q and D (Left Stick for controllers).
+
+ATTACK: Space bar (button B on controllers) to get rid of the mean flames.
+
+BUILD: A (A on controller) for walls, E (X on controllers) for spikes.
+Buildings are destroyed after a short time so use them wisely!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GotIt" type="Button" parent="Label"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -344.0
+margin_top = -209.0
+margin_right = 345.0
+margin_bottom = -106.0
+text = "GOT IT!"
+
+[node name="MainMenuButtonsContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="MainMenuButtonsContainer"]
+margin_right = 960.0
+margin_bottom = 160.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "PLAY"
+
+[node name="HowToPlay" type="Button" parent="MainMenuButtonsContainer"]
+margin_top = 190.0
+margin_right = 960.0
+margin_bottom = 350.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "HOW TO PLAY"
+
+[node name="Quit" type="Button" parent="MainMenuButtonsContainer"]
+margin_top = 380.0
+margin_right = 960.0
+margin_bottom = 540.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "QUIT"
+
+[connection signal="pressed" from="Label/GotIt" to="." method="_on_GotIt_pressed"]
+[connection signal="pressed" from="MainMenuButtonsContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="MainMenuButtonsContainer/HowToPlay" to="." method="_on_HowToPlay_pressed"]
+[connection signal="pressed" from="MainMenuButtonsContainer/Quit" to="." method="_on_Quit_pressed"]

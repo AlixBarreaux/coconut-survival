@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Creatures/Enemies/Flame/Flame.gd" type="Script" id=1]
+[ext_resource path="res://Creatures/Creature.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Textures/enemy_flame.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 75, 128 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "move"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "take_damage"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Flame" instance=ExtResource( 2 )]
+collision_mask = 40
+script = ExtResource( 1 )
+current_speed = 275
+
+[node name="CollisionShape2D" parent="." index="0"]
+self_modulate = Color( 0, 1, 0.133333, 1 )
+position = Vector2( 0, -128 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 3 )
+offset = Vector2( 0, -128 )
+
+[node name="HitBox" type="Area2D" parent="." index="2"]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( 0, -128 )
+shape = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HitTimer" type="Timer" parent="." index="3"]
+wait_time = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+anims/move = SubResource( 2 )
+anims/take_damage = SubResource( 3 )
+
+[node name="BuildingDetector" type="Area2D" parent="." index="5"]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingDetector" index="0"]
+position = Vector2( 0, -128 )
+shape = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="BuildingHitTimer" type="Timer" parent="." index="6"]
+wait_time = 0.5
+
+[node name="HurtTimer" type="Timer" parent="." index="7"]
+wait_time = 0.5
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_HitBox_body_exited"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_HitTimer_timeout"]
+[connection signal="area_entered" from="BuildingDetector" to="." method="_on_BuildingDetector_area_entered"]
+[connection signal="area_exited" from="BuildingDetector" to="." method="_on_BuildingDetector_area_exited"]
+[connection signal="body_entered" from="BuildingDetector" to="." method="_on_BuildingDetector_body_entered"]
+[connection signal="body_exited" from="BuildingDetector" to="." method="_on_BuildingDetector_body_exited"]
+[connection signal="timeout" from="BuildingHitTimer" to="." method="_on_BuildingHitTimer_timeout"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_HurtTimer_timeout"]

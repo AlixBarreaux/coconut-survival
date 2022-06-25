@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Turku_Nomads_of_the_Silk_Road_04_Fidayda.ogg-9cded7b32bacd1472ce84416fb9fab10.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Music/Turku_Nomads_of_the_Silk_Road_04_Fidayda.ogg"
+dest_files=[ "res://.import/Turku_Nomads_of_the_Silk_Road_04_Fidayda.ogg-9cded7b32bacd1472ce84416fb9fab10.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

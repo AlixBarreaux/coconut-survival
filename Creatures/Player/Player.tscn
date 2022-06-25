@@ -1,0 +1,344 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Creatures/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Creatures/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://HeldItem/Axe/Axe.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HeldItem/Pickaxe/Pickaxe.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Textures/character_player.png" type="Texture" id=5]
+[ext_resource path="res://HeldItem/Faucet/Faucet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Mechanics/Chronometer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Sounds/Characters/Player/melt.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/Characters/Player/pop_bubble.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Sounds/Characters/Player/hurt_audio_stream_random_pitch.tres" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sounds/Characters/Player/sand_step_audio_stream_random_pitch.tres" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Sounds/Music/Turku_Nomads_of_the_Silk_Road_04_Fidayda.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Creatures/Player/Music.gd" type="Script" id=13]
+[ext_resource path="res://Assets/Textures/wood_icon.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Themes/main_theme.tres" type="Theme" id=15]
+[ext_resource path="res://Assets/Textures/stone_icon.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sounds/Apple Crunch.wav" type="AudioStream" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 96, 96 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "die"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -96 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("PopSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 2.3 )
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("MeltSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "move"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -96 ), Vector2( 0, -120 ), Vector2( 0, -96 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("PopSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.588235, 0.490196, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("PopSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.08, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Player" instance=ExtResource( 1 )]
+collision_layer = 32
+script = ExtResource( 2 )
+current_speed = 300
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, -96 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2( 0, -96 )
+texture = ExtResource( 5 )
+
+[node name="ItemPickupZone" type="Area2D" parent="Sprite" index="0"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/ItemPickupZone" index="0"]
+shape = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HeldItems" type="Node2D" parent="Sprite" index="1"]
+
+[node name="Pickaxe" parent="Sprite/HeldItems" index="0" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( -180, 0 )
+
+[node name="Axe" parent="Sprite/HeldItems" index="1" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( -180, 0 )
+
+[node name="Faucet" parent="Sprite/HeldItems" index="2" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( -75, 0 )
+
+[node name="HeldItemsPositions" type="Node2D" parent="." index="2"]
+position = Vector2( 0, -96 )
+
+[node name="LeftSlot" type="Position2D" parent="HeldItemsPositions" index="0"]
+position = Vector2( -75, 0 )
+
+[node name="RightSlot" type="Position2D" parent="HeldItemsPositions" index="1"]
+position = Vector2( 75, 0 )
+
+[node name="BuildingSlots" type="Node2D" parent="." index="3"]
+
+[node name="BuildingSlotLeft" type="Position2D" parent="BuildingSlots" index="0"]
+position = Vector2( -300, 0 )
+
+[node name="BuildingSlotRight" type="Position2D" parent="BuildingSlots" index="1"]
+position = Vector2( 300, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
+
+[node name="Control" type="Control" parent="CanvasLayer" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeSurvived" type="Label" parent="CanvasLayer/Control" index="0"]
+self_modulate = Color( 0.831373, 0.333333, 0, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -402.829
+margin_top = 80.0
+margin_right = -108.895
+margin_bottom = 121.0
+text = "0:00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control" index="1"]
+self_modulate = Color( 0.247059, 1, 0.894118, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -268.0
+margin_top = 55.0
+margin_right = 267.0
+margin_bottom = 136.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chronometer" parent="CanvasLayer/Control" index="2" instance=ExtResource( 7 )]
+
+[node name="ItemsContainer" type="VBoxContainer" parent="CanvasLayer/Control" index="3"]
+margin_left = 80.0
+margin_top = 50.0
+margin_right = 334.0
+margin_bottom = 63.0
+custom_constants/separation = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WoodContainer" type="HBoxContainer" parent="CanvasLayer/Control/ItemsContainer" index="0"]
+margin_right = 334.0
+margin_bottom = 63.0
+custom_constants/separation = 50
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="WoodIcon" type="TextureRect" parent="CanvasLayer/Control/ItemsContainer/WoodContainer" index="0"]
+margin_right = 256.0
+margin_bottom = 63.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WoodAmount" type="Label" parent="CanvasLayer/Control/ItemsContainer/WoodContainer" index="1"]
+self_modulate = Color( 0.831373, 0.333333, 0, 1 )
+margin_left = 306.0
+margin_top = 11.0
+margin_right = 334.0
+margin_bottom = 52.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StoneContainer" type="HBoxContainer" parent="CanvasLayer/Control/ItemsContainer" index="1"]
+margin_top = 103.0
+margin_right = 334.0
+margin_bottom = 174.0
+custom_constants/separation = 50
+
+[node name="StoneIcon" type="TextureRect" parent="CanvasLayer/Control/ItemsContainer/StoneContainer" index="0"]
+margin_right = 256.0
+margin_bottom = 71.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StoneAmount" type="Label" parent="CanvasLayer/Control/ItemsContainer/StoneContainer" index="1"]
+self_modulate = Color( 0.831373, 0.333333, 0, 1 )
+margin_left = 306.0
+margin_top = 15.0
+margin_right = 334.0
+margin_bottom = 56.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerCamera" type="Camera2D" parent="." index="5"]
+position = Vector2( 0, -288 )
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+anims/die = SubResource( 2 )
+anims/move = SubResource( 3 )
+anims/take_damage = SubResource( 4 )
+
+[node name="PopSound" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = ExtResource( 11 )
+
+[node name="MeltSound" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource( 8 )
+
+[node name="Music" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource( 12 )
+volume_db = -5.0
+autoplay = true
+script = ExtResource( 13 )
+
+[node name="Coconut" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = ExtResource( 17 )
+[connection signal="body_entered" from="Sprite/ItemPickupZone" to="." method="_on_ItemPickupZone_body_entered"]
+[connection signal="finished" from="Music" to="Music" method="_on_Music_finished"]
