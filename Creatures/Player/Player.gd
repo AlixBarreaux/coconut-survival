@@ -211,6 +211,9 @@ func on_update_time_survived(time : float) -> void:
 func _on_ItemPickupZone_body_entered(body : PhysicsBody2D) -> void:
 	if "Coconut" in body.name:
 		print("Coconut picked up!")
+		if self.current_health >= self.max_health:
+			print("Coconut not picked since the health bar is full")
+			return
 		$Coconut.play()
 		# Replenish some health
 		replenish_current_health(body.get_health_replenish_value())

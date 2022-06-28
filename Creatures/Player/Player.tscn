@@ -340,5 +340,6 @@ script = ExtResource( 13 )
 
 [node name="Coconut" type="AudioStreamPlayer2D" parent="." index="10"]
 stream = ExtResource( 17 )
+
 [connection signal="body_entered" from="Sprite/ItemPickupZone" to="." method="_on_ItemPickupZone_body_entered"]
 [connection signal="finished" from="Music" to="Music" method="_on_Music_finished"]
