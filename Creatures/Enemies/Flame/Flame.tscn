@@ -86,6 +86,7 @@ wait_time = 0.5
 
 [node name="HurtTimer" type="Timer" parent="." index="7"]
 wait_time = 0.5
+
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_HitBox_body_exited"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_HitTimer_timeout"]

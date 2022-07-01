@@ -138,21 +138,23 @@ func _on_BuildingDetector_body_exited(body : PhysicsBody2D) -> PhysicsBody2D:
 
 var buildings_in_range : Array = []
 # Spikes
+var is_taking_spike_damage: bool = false
 func _on_BuildingDetector_area_entered(area : Area2D) -> Area2D:
-	if not "aucet" in area.name:
+	if not "Faucet" in area.name:
 		buildings_in_range.append(area)
 		print("An Area2D entered flame building detector: ", area.name)
-		area.deplete_current_health(5)
+		area.deplete_current_health(25)
+		self.is_taking_spike_damage = true
 		$HurtTimer.start()
+		
 	return area
 
 var body_to_remove
 func _on_BuildingDetector_area_exited(area : Area2D) -> Area2D:
-	if not "aucet" in area.name:
+	if not "Faucet" in area.name:
 		if area in buildings_in_range:
 			body_to_remove = buildings_in_range.find(area)
 			buildings_in_range.remove(body_to_remove)
-
 		print("An Area2D exited flame building detector: ", area.name)
 		$HurtTimer.stop()
 	return area
@@ -161,9 +163,10 @@ func _on_BuildingDetector_area_exited(area : Area2D) -> Area2D:
 func stop_building_hit_timer() -> void:
 	$BuildingHitTimer.stop()
 
-
 func _on_HurtTimer_timeout():
-	self.deplete_current_health(8)
-
+	if self.is_taking_spike_damage:
+		self.deplete_current_health(15)
+	else:
+		self.deplete_current_health(8)
 
 

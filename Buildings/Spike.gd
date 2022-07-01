@@ -4,7 +4,7 @@ extends Area2D
 # --------------------------    DECLARE VARIABLES     --------------------------
 
 export var current_health : int = 30
-export var damage : int = 5
+export var damage : int = 25
 
 # ----------------------------    RUN THE CODE     -----------------------------
 
