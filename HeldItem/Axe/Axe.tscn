@@ -211,12 +211,11 @@ anims/rotate_right = SubResource( 3 )
 stream = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="." index="4"]
-visible = false
-self_modulate = Color( 0.486275, 0.168627, 0, 1 )
+self_modulate = Color( 0.741176, 0.741176, 0.741176, 1 )
 margin_left = -150.0
-margin_top = -130.0
+margin_top = 40.0
 margin_right = -110.0
-margin_bottom = -89.0
+margin_bottom = 81.0
 theme = ExtResource( 6 )
 custom_fonts/font = ExtResource( 5 )
 text = "+1"
