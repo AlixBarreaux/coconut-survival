@@ -32,8 +32,8 @@ func attack() -> void:
 		
 		self.show()
 		$AnimationPlayer.play(choosen_animation)
-#	else:
-#		print("You cannot attack right now!")
+	else:
+		print("You cannot attack right now!")
 
 
 func hide_item() -> void:
