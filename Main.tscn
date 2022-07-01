@@ -27,14 +27,16 @@ script = ExtResource( 5 )
 
 [node name="Decor" type="Node2D" parent="."]
 
-[node name="EnemySpawnHouse" type="Node2D" parent="Decor"]
+[node name="SpawnHouses" type="Node2D" parent="Decor"]
+
+[node name="EnemySpawnHouse" type="Node2D" parent="Decor/SpawnHouses"]
 self_modulate = Color( 0.866667, 0.690196, 0, 1 )
 position = Vector2( 11094, 0 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Polygon2D" type="Polygon2D" parent="Decor/EnemySpawnHouse"]
+[node name="Polygon2D" type="Polygon2D" parent="Decor/SpawnHouses/EnemySpawnHouse"]
 self_modulate = Color( 0.866667, 0.690196, 0, 1 )
 position = Vector2( -738.598, -202.217 )
 scale = Vector2( 1.10069, 1.10069 )
@@ -44,7 +46,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Polygon2D2" type="Polygon2D" parent="Decor/EnemySpawnHouse"]
+[node name="Polygon2D2" type="Polygon2D" parent="Decor/SpawnHouses/EnemySpawnHouse"]
 self_modulate = Color( 0.568627, 0.427451, 0, 1 )
 position = Vector2( -828, -192 )
 scale = Vector2( 0.821053, 0.821053 )
@@ -54,14 +56,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="EnemySpawnHouse2" type="Node2D" parent="Decor"]
+[node name="EnemySpawnHouse2" type="Node2D" parent="Decor/SpawnHouses"]
 self_modulate = Color( 0.866667, 0.690196, 0, 1 )
 position = Vector2( -8902, 0 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Polygon2D" type="Polygon2D" parent="Decor/EnemySpawnHouse2"]
+[node name="Polygon2D" type="Polygon2D" parent="Decor/SpawnHouses/EnemySpawnHouse2"]
 self_modulate = Color( 0.866667, 0.690196, 0, 1 )
 position = Vector2( -738.598, -202.217 )
 scale = Vector2( 1.10069, 1.10069 )
@@ -71,7 +73,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Polygon2D2" type="Polygon2D" parent="Decor/EnemySpawnHouse2"]
+[node name="Polygon2D2" type="Polygon2D" parent="Decor/SpawnHouses/EnemySpawnHouse2"]
 self_modulate = Color( 0.568627, 0.427451, 0, 1 )
 position = Vector2( -828, -192 )
 scale = Vector2( 0.821053, 0.821053 )
@@ -81,11 +83,24 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Ground" type="Node2D" parent="Decor"]
+position = Vector2( 9700, 80 )
+
+[node name="Surface" type="Polygon2D" parent="Decor/Ground"]
+position = Vector2( -9700, -80 )
+color = Color( 0.717647, 0.607843, 0, 1 )
+polygon = PoolVector2Array( -15100, -60, 15100, -60, 15100, 60, -15100, 60 )
+
+[node name="Underground" type="Polygon2D" parent="Decor/Ground"]
+position = Vector2( -9700, -80 )
+color = Color( 0.54902, 0.466667, 0, 1 )
+polygon = PoolVector2Array( -15100, 60, 15100, 60, 15100, 3000, -15100, 3000 )
+
 [node name="MapBoundaries" type="Node2D" parent="Decor"]
 
 [node name="PilarLeft" type="Node2D" parent="Decor/MapBoundaries"]
 self_modulate = Color( 0.866667, 0.690196, 0, 1 )
-position = Vector2( -9500, 80 )
+position = Vector2( -9500, 35 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -112,7 +127,7 @@ __meta__ = {
 
 [node name="PilarRight" type="Node2D" parent="Decor/MapBoundaries"]
 self_modulate = Color( 0.866667, 0.690196, 0, 1 )
-position = Vector2( 9500, 80 )
+position = Vector2( 9500, 35 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -136,19 +151,6 @@ polygon = PoolVector2Array( -190, -60, -190, -850, 0, -1000, 190, -850, 190, -60
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="Ground" type="Node2D" parent="Decor"]
-position = Vector2( 9700, 80 )
-
-[node name="Surface" type="Polygon2D" parent="Decor/Ground"]
-position = Vector2( -9700, -80 )
-color = Color( 0.717647, 0.607843, 0, 1 )
-polygon = PoolVector2Array( -15100, -60, 15100, -60, 15100, 60, -15100, 60 )
-
-[node name="Underground" type="Polygon2D" parent="Decor/Ground"]
-position = Vector2( -9700, -80 )
-color = Color( 0.54902, 0.466667, 0, 1 )
-polygon = PoolVector2Array( -15100, 60, 15100, 60, 15100, 3000, -15100, 3000 )
 
 [node name="GameOverMenu" parent="." instance=ExtResource( 6 )]
 visible = false
