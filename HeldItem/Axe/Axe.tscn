@@ -196,8 +196,7 @@ script = ExtResource( 2 )
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
-offset = Vector2( 45, 0 )
-flip_h = true
+offset = Vector2( -45, 0 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 87, 0 )
@@ -214,9 +213,9 @@ stream = ExtResource( 4 )
 [node name="Label" type="Label" parent="." index="4"]
 visible = false
 self_modulate = Color( 0.486275, 0.168627, 0, 1 )
-margin_left = 130.0
+margin_left = -150.0
 margin_top = -130.0
-margin_right = 170.0
+margin_right = -110.0
 margin_bottom = -89.0
 theme = ExtResource( 6 )
 custom_fonts/font = ExtResource( 5 )
@@ -224,6 +223,7 @@ text = "+1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="body_entered" from="." to="." method="_on_Axe_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Axe_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

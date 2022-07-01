@@ -31,11 +31,11 @@ func generate_clouds() -> void:
 
 	for cloud in range (0, cloud_amount):
 		cloud_instance = CLOUD_PRELOAD.instance()
+		self.add_child(cloud_instance)
 		randomize_cloud_position()
 		cloud_instance.global_position.x = random_position_x
 		cloud_instance.global_position.y = random_position_y
 		
-		self.add_child(cloud_instance)
 
 var position_x_randomizer = RandomNumberGenerator.new()
 export var min_cloud_edge : int = -11000

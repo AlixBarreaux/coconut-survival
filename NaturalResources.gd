@@ -41,16 +41,15 @@ func generate_trees() -> void:
 #		print("Tree generated at: ", random_spawn_position)
 		
 		palm_tree_instance = PALM_TREE_PRELOAD.instance()
+		self.add_child(palm_tree_instance)
 		palm_tree_instance.global_position = random_spawn_position
 		palm_tree_instance.name = str("PalmTree", generated_tree)
 		
-		self.add_child(palm_tree_instance)
-		
 		coconut_instance = COCONUT_PRELOAD.instance()
+		self.add_child(coconut_instance)
 		coconut_instance.global_position = random_spawn_position
 		coconut_instance.global_position.y = 0
 		coconut_instance.name = str("Coconut", generated_tree)
-		self.add_child(coconut_instance)
 		
 #	print("Total trees generated: ", tree_amount)
 

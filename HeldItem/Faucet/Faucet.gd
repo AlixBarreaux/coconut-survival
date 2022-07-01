@@ -14,6 +14,7 @@ func _ready() -> void:
 	self.hide()
 	Events.connect("tool_animation_selected", self, "choose_animation")
 
+
 func _physics_process(delta : float) -> void:
 	pass
 

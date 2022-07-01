@@ -14,7 +14,7 @@ func _ready() -> void:
 
 # --------------------------    DECLARE FUNCTIONS     --------------------------
 
-var choosen_animation : String
+onready var choosen_animation : String
 func choose_animation(animation_name : String) -> void:
 	choosen_animation = animation_name
 
@@ -23,6 +23,7 @@ func _on_Axe_body_entered(body : PhysicsBody2D) -> void:
 	if "PalmTree" in body.name:
 		self.show()
 		$AnimationPlayer.play(choosen_animation)
+#		$AnimationPlayer.call_deferred("play", choosen_animation)
 		collided_body = body
 		print("Entered! Collided body: ", collided_body.name)
 

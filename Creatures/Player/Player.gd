@@ -23,6 +23,8 @@ func _ready() -> void:
 
 	# Set the creature's health to max health
 	set_current_health(max_health)
+	
+	self.rotate_tools_to_left()
 
 func set_tool_mode_to_false() -> void:
 	can_use_tool = false
@@ -113,7 +115,7 @@ func rotate_tools_to_left() -> void:
 			item.get_child(1).position = $HeldItemsPositions/LeftSlot.get_position()
 			selected_tool_animation = tools_animations[0]
 			Events.emit_signal("tool_animation_selected", selected_tool_animation)
-#			print("Selected animation: ", selected_tool_animation)
+			print("Selected animation: ", selected_tool_animation)
 
 
 # Flip items and self right
@@ -123,7 +125,7 @@ func rotate_tools_to_right() -> void:
 			item.get_child(1).position = $HeldItemsPositions/RightSlot.get_position()
 			selected_tool_animation = tools_animations[1]
 			Events.emit_signal("tool_animation_selected", selected_tool_animation)
-#			print("Selected animation: ", selected_tool_animation)
+			print("Selected animation: ", selected_tool_animation)
 
 
 func get_action_inputs() -> void:
