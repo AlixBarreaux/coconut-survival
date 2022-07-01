@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://NaturalResources.gd" type="Script" id=1]
 [ext_resource path="res://Creatures/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Pause Menu/PauseMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Mechanics/Sky.gd" type="Script" id=5]
 [ext_resource path="res://GUI/Game Over/GameOverMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mechanics/EnemiesSpawner/EnemySpawnTimer.tscn" type="PackedScene" id=7]
@@ -104,3 +105,7 @@ shape = SubResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 4 )]
