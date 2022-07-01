@@ -3,7 +3,7 @@ extends Node
 
 # --------------------------    DECLARE VARIABLES     --------------------------
 
-export var spawn_positions : PoolVector2Array = [Vector2(-10000, 0), Vector2(10000, 0)]
+export onready var spawn_positions : PoolVector2Array = [$SpawnPointLeft.global_position, $SpawnPointRight.global_position]
 
 const ENEMY_PATH : String = "res://Creatures/Enemies/Flame/Flame.tscn"
 const ENEMY_PRELOAD = preload(ENEMY_PATH)
@@ -13,6 +13,7 @@ const ENEMY_PRELOAD = preload(ENEMY_PATH)
 
 func _ready() -> void:
 	Events.connect("spawn_enemy", self, "spawn_enemies")
+
 
 # --------------------------    DECLARE FUNCTIONS     --------------------------
 
