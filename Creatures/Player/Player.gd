@@ -35,7 +35,7 @@ func set_tool_mode_to_true() -> void:
 
 
 
-func _physics_process(delta : float) -> void:
+func _physics_process(_delta : float) -> void:
 	get_inputs()
 	check_if_player_is_moving()
 	if self.is_moving:

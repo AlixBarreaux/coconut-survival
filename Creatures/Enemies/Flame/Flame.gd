@@ -33,7 +33,7 @@ func _ready() -> void:
 	Events.connect("on_wall_destroyed", self, "stop_building_hit_timer")
 	Events.connect("on_spike_destroyed", self, "stop_building_hit_timer")
 
-func _physics_process(delta : float) -> void:
+func _physics_process(_delta : float) -> void:
 	velocity = Vector2(0, 0)
 	choose_move_direction()
 	velocity = velocity.normalized() * current_speed

@@ -15,9 +15,6 @@ func _ready() -> void:
 	Events.connect("tool_animation_selected", self, "choose_animation")
 
 
-func _physics_process(delta : float) -> void:
-	pass
-
 # --------------------------    DECLARE FUNCTIONS     --------------------------
 
 var choosen_animation : String

@@ -16,7 +16,7 @@ func _ready() -> void:
 	return
 
 
-func _unhandled_key_input(event: InputEventKey) -> void:
+func _unhandled_key_input(_event: InputEventKey) -> void:
 	if Input.is_action_just_pressed("pause_game"):
 		self.visible = !self.visible
 

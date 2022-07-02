@@ -8,7 +8,7 @@ extends Node2D
 func _ready() -> void:
 	Events.connect("game_over", self, "on_game_over")
 
-func _physics_process(delta : float) -> void:
+func _physics_process(_delta : float) -> void:
 	if Input.is_action_just_pressed("build_spike"):
 		print("Spike button!")
 		build_spike()
