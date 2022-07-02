@@ -165,7 +165,7 @@ func replenish_current_health(value : int) -> void:
 func deplete_current_health(value : int) -> void:
 	current_health -= value
 	$CanvasLayer/Control/HealthBar.value = current_health
-	print("PLAYER HURT!")
+#	print("PLAYER HURT!")
 
 	# Clamp between 0 and max_health so that the player doesn't
 	# have less current_health than 0
@@ -183,7 +183,7 @@ func check_if_player_dead() -> void:
 
 
 func die() -> void:
-	print("The player is dead!")
+#	print("The player is dead!")
 	$AnimationPlayer.play("die")
 	yield(get_tree().create_timer(3.5), "timeout")
 	Events.emit_signal("send_score", time_survived)
@@ -212,17 +212,17 @@ func on_update_time_survived(time : float) -> void:
 
 func _on_ItemPickupZone_body_entered(body : PhysicsBody2D) -> void:
 	if "Coconut" in body.name:
-		print("Coconut picked up!")
+#		print("Coconut picked up!")
 		if self.current_health >= self.max_health:
-			print("Coconut not picked since the health bar is full")
+#			print("Coconut not picked since the health bar is full")
 			return
 		$Coconut.play()
 		# Replenish some health
 		replenish_current_health(body.get_health_replenish_value())
-		print("Current health is now: ", current_health)
+#		print("Current health is now: ", current_health)
 		body.queue_free()
 	else:
-		print("Another item has been picked up in player: ", body.name)
+#		print("Another item has been picked up in player: ", body.name)
 
 
 func deplete_stone_amount(value : int) -> void:

@@ -25,7 +25,7 @@ func _on_Axe_body_entered(body : PhysicsBody2D) -> void:
 		$AnimationPlayer.play(choosen_animation)
 #		$AnimationPlayer.call_deferred("play", choosen_animation)
 		collided_body = body
-		print("Entered! Collided body: ", collided_body.name)
+#		print("Entered! Collided body: ", collided_body.name)
 
 
 var collided_body
@@ -33,17 +33,17 @@ func _on_Axe_body_exited(body : PhysicsBody2D) -> void:
 		self.hide()
 		$AnimationPlayer.stop()
 		collided_body = -1
-		print("Exited! Body is now null.")
+#		print("Exited! Body is now null.")
 
 
 func _on_AnimationPlayer_animation_started(anim_name):
-	print("Axe started animation: ", anim_name)
+#	print("Axe started animation: ", anim_name)
 	return anim_name
 	
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	print("Axe has finished animation: ", anim_name)
+#	print("Axe has finished animation: ", anim_name)
 	$AnimationPlayer.play(choosen_animation)
 	Events.emit_signal("tree_cut")
 	collided_body.on_tree_cut()

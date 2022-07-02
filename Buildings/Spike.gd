@@ -16,7 +16,7 @@ func _ready() -> void:
 func deplete_current_health(value : int) -> void:
 	current_health -= value
 	check_if_alive()
-	print("Spike ", self.name, " took damage!")
+#	print("Spike ", self.name, " took damage!")
 
 
 func check_if_alive() -> void:

@@ -107,7 +107,7 @@ func _on_HitBox_body_entered(body : PhysicsBody2D) -> PhysicsBody2D:
 
 func _on_HitTimer_timeout():
 	damage_entity()
-	print("FIRE: TAKE THAT!")
+#	print("FIRE: TAKE THAT!")
 
 
 func _on_HitBox_body_exited(body : PhysicsBody2D) -> PhysicsBody2D:
@@ -119,20 +119,20 @@ func _on_HitBox_body_exited(body : PhysicsBody2D) -> PhysicsBody2D:
 # Attack building
 func _on_BuildingHitTimer_timeout() -> void:
 	randomize_current_damage()
-	print("Building hit timer timeout! Damage to be sent: ", current_damage)
+#	print("Building hit timer timeout! Damage to be sent: ", current_damage)
 
 #	Events.emit_signal("damage_building", current_damage)
 
 
 func _on_BuildingDetector_body_entered(body : PhysicsBody2D) -> PhysicsBody2D:
-	print("FLAME AREA HAS BEEN ENTERED: ", body.name)
+#	print("FLAME AREA HAS BEEN ENTERED: ", body.name)
 	if not "Ground" in body.name:
 		$BuildingHitTimer.start()
 	return body
 
 
 func _on_BuildingDetector_body_exited(body : PhysicsBody2D) -> PhysicsBody2D:
-	print("FLAME AREA HAS BEEN EXITED: ", body.name)
+#	print("FLAME AREA HAS BEEN EXITED: ", body.name)
 	$BuildingHitTimer.stop()
 	return body
 
@@ -142,7 +142,7 @@ var is_taking_spike_damage: bool = false
 func _on_BuildingDetector_area_entered(area : Area2D) -> Area2D:
 	if not "Faucet" in area.name:
 		buildings_in_range.append(area)
-		print("An Area2D entered flame building detector: ", area.name)
+#		print("An Area2D entered flame building detector: ", area.name)
 		area.deplete_current_health(25)
 		self.is_taking_spike_damage = true
 		$HurtTimer.start()
@@ -155,7 +155,7 @@ func _on_BuildingDetector_area_exited(area : Area2D) -> Area2D:
 		if area in buildings_in_range:
 			body_to_remove = buildings_in_range.find(area)
 			buildings_in_range.remove(body_to_remove)
-		print("An Area2D exited flame building detector: ", area.name)
+#		print("An Area2D exited flame building detector: ", area.name)
 		$HurtTimer.stop()
 	return area
 

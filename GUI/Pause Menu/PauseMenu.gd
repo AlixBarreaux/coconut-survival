@@ -30,7 +30,7 @@ func _on_ResumeButton_pressed() -> void:
 
 
 func _on_QuitToMainMenuButton_pressed() -> void:
-	print("Quit to main menu button clicked!")
+#	print("Quit to main menu button clicked!")
 	get_tree().paused = false
 	get_tree().change_scene(main_menu_scene_path)
 	return
