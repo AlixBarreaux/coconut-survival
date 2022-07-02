@@ -5,6 +5,7 @@ extends Node
 
 # ----------------------------    RUN THE CODE     -----------------------------
 
+# warning-ignore
 signal tree_cut
 signal stone_pile_mined
 

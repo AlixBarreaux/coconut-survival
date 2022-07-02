@@ -223,6 +223,7 @@ func _on_ItemPickupZone_body_entered(body : PhysicsBody2D) -> void:
 		body.queue_free()
 	else:
 #		print("Another item has been picked up in player: ", body.name)
+		pass
 
 
 func deplete_stone_amount(value : int) -> void:
