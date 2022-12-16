@@ -21,13 +21,17 @@ onready var visibility_notifier_2d: VisibilityNotifier2D = $VisibilityEnabler2D
 
 func _ready() -> void:
 	self._initialize_signals()
-	randomize_health_replenish_value()
+	self._initialize()
 
 
 # --------------------------    DECLARE FUNCTIONS     --------------------------
 
-func _physics_process(delta: float) -> void:
-	apply_central_impulse(Vector2(-1.0, 0.0))
+
+func _initialize() -> void:
+	self.hide()
+	randomize_health_replenish_value()
+	return
+
 
 func _initialize_signals() -> void:
 	visibility_notifier_2d.connect("screen_entered", self, "on_visibility_notifier_2d_screen_entered")
@@ -37,13 +41,11 @@ func _initialize_signals() -> void:
 
 func on_visibility_notifier_2d_screen_entered() -> void:
 	self.show()
-	print("Show ", self.name)
 	return
 
 
 func on_visibility_notifier_2d_screen_exited() -> void:
 	self.hide()
-	print("Hide ", self.name)
 	return
 
 

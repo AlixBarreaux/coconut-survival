@@ -5,7 +5,7 @@
 [ext_resource path="res://NaturalResources/Trees/Palm Tree/PalmTree.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 50, 370 )
+extents = Vector2( 50, 299 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 200, 10 )
@@ -39,4 +39,5 @@ shape = SubResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
+
 [connection signal="area_entered" from="NaturalResourceDetector" to="." method="_on_NaturalResourceDetector_area_entered"]
