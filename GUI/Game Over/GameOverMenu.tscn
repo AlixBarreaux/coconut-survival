@@ -78,5 +78,6 @@ text = "PLAY AGAIN"
 __meta__ = {
 "_editor_description_": ""
 }
+
 [connection signal="pressed" from="LabelsContainer/Buttons/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="LabelsContainer/Buttons/PlayAgain" to="." method="_on_PlayAgain_pressed"]
