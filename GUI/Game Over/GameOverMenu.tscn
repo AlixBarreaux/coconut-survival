@@ -13,9 +13,10 @@ margin_right = -1.21252
 margin_bottom = -1.21252
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="LabelsContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.25
@@ -56,8 +57,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="LabelsContainer/Buttons"]
+[node name="PlayAgain" type="Button" parent="LabelsContainer/Buttons"]
 margin_right = 430.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "PLAY AGAIN"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Quit" type="Button" parent="LabelsContainer/Buttons"]
+margin_left = 530.0
+margin_right = 960.0
 margin_bottom = 270.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -68,16 +80,5 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="PlayAgain" type="Button" parent="LabelsContainer/Buttons"]
-margin_left = 530.0
-margin_right = 960.0
-margin_bottom = 270.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "PLAY AGAIN"
-__meta__ = {
-"_editor_description_": ""
-}
-
-[connection signal="pressed" from="LabelsContainer/Buttons/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="LabelsContainer/Buttons/PlayAgain" to="." method="_on_PlayAgain_pressed"]
+[connection signal="pressed" from="LabelsContainer/Buttons/Quit" to="." method="_on_Quit_pressed"]

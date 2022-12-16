@@ -3,6 +3,11 @@ extends Control
 
 # --------------------------    DECLARE VARIABLES     --------------------------
 
+
+# Node References
+onready var play_button: Button = $LabelsContainer/Buttons/PlayAgain
+
+
 # ----------------------------    RUN THE CODE     -----------------------------
 
 func _ready() -> void:
@@ -21,6 +26,7 @@ func update_score(value : int) -> void:
 
 func show_menu() -> void:
 	self.show()
+	play_button.grab_focus()
 
 
 func hide_menu() -> void:

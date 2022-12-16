@@ -154,6 +154,9 @@ __meta__ = {
 
 [node name="GameOverMenu" parent="." instance=ExtResource( 6 )]
 visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="World" type="Node2D" parent="."]
 script = ExtResource( 3 )

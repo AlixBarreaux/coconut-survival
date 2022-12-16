@@ -25,6 +25,8 @@ func _ready() -> void:
 	set_current_health(max_health)
 	
 	self.rotate_tools_to_left()
+	return
+	
 
 func set_tool_mode_to_false() -> void:
 	can_use_tool = false
