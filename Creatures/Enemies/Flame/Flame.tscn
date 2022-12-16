@@ -45,6 +45,9 @@ tracks/0/keys = {
 collision_mask = 40
 script = ExtResource( 1 )
 current_speed = 275
+current_direction = 0
+random_current_damage_generator_min_range = 1
+random_current_damage_generator_max_range = 5
 
 [node name="CollisionShape2D" parent="." index="0"]
 self_modulate = Color( 0, 1, 0.133333, 1 )

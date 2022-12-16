@@ -1,15 +1,17 @@
 extends Creature
-
 class_name Flame
-"""
-This script controls the enemy flame.
-The hit timer wait time defines the time it takes to damage the player again
-when he is in the flame area.
-A signal damage_player with the argument current_damage is emitted to damage the
-player in the Events singleton. The player is listening for this signal and
-receives the argument and substracts the current health by this argument.
-"""
+
+# This script controls the enemy flame.
+# The hit timer wait time defines the time it takes to damage the player again
+# when he is in the flame area.
+# A signal damage_player with the argument current_damage is emitted to damage the
+# player in the Events singleton. The player is listening for this signal and
+# receives the argument and substracts the current health by this argument.
+
+
 # --------------------------    DECLARE VARIABLES     --------------------------
+
+
 enum MOVE_DIRECTION {LEFT = 0, RIGHT = 1}
 
 export (MOVE_DIRECTION) var current_direction = MOVE_DIRECTION.LEFT
@@ -22,23 +24,36 @@ export var random_current_damage_generator_max_range : int = 5
 var current_damage : int setget set_current_damage, get_current_damage
 var random_current_damage_generator = RandomNumberGenerator.new()
 
+
+# Node References:
+onready var sprite: Sprite = $Sprite
+onready var hit_timer: Timer = $HitTimer
+onready var building_hit_timer: Timer =  $BuildingHitTimer
+onready var hurt_timer: Timer = $HurtTimer
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+
 # ----------------------------    RUN THE CODE     -----------------------------
 
-func _ready() -> void:
-	$HitTimer.stop()
-	set_current_health(max_health)
-	$AnimationPlayer.play("move")
-	Events.connect("damage_flame", self, "deplete_current_health")
 
+func _ready() -> void:
+	hit_timer.stop()
+	set_current_health(max_health)
+	animation_player.play("move")
+
+	Events.connect("damage_flame", self, "deplete_current_health")
 	Events.connect("on_wall_destroyed", self, "stop_building_hit_timer")
 	Events.connect("on_spike_destroyed", self, "stop_building_hit_timer")
+
 
 func _physics_process(_delta : float) -> void:
 	velocity = Vector2(0, 0)
 	choose_move_direction()
 	velocity = velocity.normalized() * current_speed
 
+
 # --------------------------    DECLARE FUNCTIONS     --------------------------
+
 
 # Choose which direction the enemy will move to indefinitely
 func choose_move_direction() -> void:
@@ -47,10 +62,10 @@ func choose_move_direction() -> void:
 	match current_direction:
 		MOVE_DIRECTION.LEFT:
 			move_left()
-			$Sprite.set_flip_h(false)
+			sprite.set_flip_h(false)
 		MOVE_DIRECTION.RIGHT:
 			move_right()
-			$Sprite.set_flip_h(true)
+			sprite.set_flip_h(true)
 		_:
 			printerr("(!) ERROR: No move direction selected in Flame.gd!")
 
@@ -86,7 +101,7 @@ func damage_entity() -> void:
 # Health Management
 func deplete_current_health(value : int) -> void:
 	current_health -= value
-	$AnimationPlayer.play("take_damage")
+	animation_player.play("take_damage")
 	check_if_alive()
 
 func check_if_alive() -> void:
@@ -101,19 +116,17 @@ func die() -> void:
 
 func _on_HitBox_body_entered(body : PhysicsBody2D) -> PhysicsBody2D:
 	damage_entity()
-	$HitTimer.start()
+	hit_timer.start()
 	return body
 
 
 func _on_HitTimer_timeout():
 	damage_entity()
-#	print("FIRE: TAKE THAT!")
 
 
 func _on_HitBox_body_exited(body : PhysicsBody2D) -> PhysicsBody2D:
-	$HitTimer.stop()
+	hit_timer.stop()
 	return body
-
 
 
 # Attack building
@@ -125,15 +138,13 @@ func _on_BuildingHitTimer_timeout() -> void:
 
 
 func _on_BuildingDetector_body_entered(body : PhysicsBody2D) -> PhysicsBody2D:
-#	print("FLAME AREA HAS BEEN ENTERED: ", body.name)
 	if not "Ground" in body.name:
-		$BuildingHitTimer.start()
+		building_hit_timer.start()
 	return body
 
 
 func _on_BuildingDetector_body_exited(body : PhysicsBody2D) -> PhysicsBody2D:
-#	print("FLAME AREA HAS BEEN EXITED: ", body.name)
-	$BuildingHitTimer.stop()
+	building_hit_timer.stop()
 	return body
 
 var buildings_in_range : Array = []
@@ -145,28 +156,28 @@ func _on_BuildingDetector_area_entered(area : Area2D) -> Area2D:
 #		print("An Area2D entered flame building detector: ", area.name)
 		area.deplete_current_health(25)
 		self.is_taking_spike_damage = true
-		$HurtTimer.start()
+		hurt_timer.start()
 		
 	return area
 
+
 var body_to_remove
+
 func _on_BuildingDetector_area_exited(area : Area2D) -> Area2D:
 	if not "Faucet" in area.name:
 		if area in buildings_in_range:
 			body_to_remove = buildings_in_range.find(area)
 			buildings_in_range.remove(body_to_remove)
 #		print("An Area2D exited flame building detector: ", area.name)
-		$HurtTimer.stop()
+		hurt_timer.stop()
 	return area
 
 
 func stop_building_hit_timer() -> void:
-	$BuildingHitTimer.stop()
+	building_hit_timer.stop()
 
 func _on_HurtTimer_timeout():
 	if self.is_taking_spike_damage:
 		self.deplete_current_health(15)
 	else:
 		self.deplete_current_health(8)
-
-
