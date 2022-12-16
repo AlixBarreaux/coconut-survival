@@ -23,21 +23,20 @@ margin_top = 125.0
 margin_bottom = 166.0
 
 [node name="Label" type="Label" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "HOW TO PLAY:
 Go next to a tree or rock and stop moving to gather it.
 Coconuts heal you. Stay alive as long as you can. 
 
-Xbox/PS4 supported. Other controllers may work but 
-the buttons used may be different in game.
+Xbox / PS4 / Switch supported. Other controllers might work.
 
-MOVEMENTS: Use A/Q and D (Left Stick for controllers).
+MOVEMENTS: A and D / Controller Left Stick
 
-ATTACK: Space bar (button B on controllers) to get rid of the mean flames.
+ATTACK: Space bar / Left Click / Controller Button B
 
 BUILD: A (A on controller) for walls, E (X on controllers) for spikes.
+
 Buildings are destroyed after a short time so use them wisely!"
 align = 1
 valign = 1
@@ -57,6 +56,7 @@ margin_bottom = -106.0
 text = "GOT IT!"
 
 [node name="MainMenuButtonsContainer" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.25
 anchor_top = 0.25
 anchor_right = 0.75
