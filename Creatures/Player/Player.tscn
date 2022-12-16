@@ -166,6 +166,8 @@ tracks/2/keys = {
 collision_layer = 32
 script = ExtResource( 2 )
 current_speed = 300
+wood_amount = 0
+stone_amount = 0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( 0, -96 )

@@ -129,16 +129,14 @@ tracks/4/keys = {
 }
 
 [node name="Faucet" instance=ExtResource( 1 )]
-rotation = 3.40339
 collision_mask = 1
 script = ExtResource( 3 )
+faucet_attack_value = 20
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( -90, 0 )
 flip_h = true
-flip_v = true
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( -90.012, 0 )
@@ -151,6 +149,7 @@ anims/rotate_right = SubResource( 3 )
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." index="3"]
 stream = ExtResource( 4 )
+
 [connection signal="body_entered" from="." to="." method="_on_Faucet_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Faucet_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
