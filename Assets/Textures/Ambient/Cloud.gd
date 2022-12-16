@@ -38,13 +38,11 @@ func _initialize() -> void:
 
 
 func on_visibility_notifier_2d_screen_entered() -> void:
-	print("Show")
 	self.show()
 	return
 
 
 func on_visibility_notifier_2d_screen_exited() -> void:
-	print("Hide")
 	self.hide()
 	return
 
