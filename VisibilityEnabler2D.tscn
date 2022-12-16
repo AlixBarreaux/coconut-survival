@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends VisibilityEnabler2D
+
+
+# ----------------- DECLARE VARIABLES -----------------
+
+# ---------------------- RUN CODE ---------------------
+
+# ----------------- DECLARE FUNCTIONS -----------------
+
+
+func _on_VisibilityEnabler2D_screen_entered() -> void:
+	print(\"Entered\")
+	self.show()
+	return
+
+
+func _on_VisibilityEnabler2D_screen_exited() -> void:
+	print(\"Exited\")
+	self.hide()
+	return
+"
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D"]
+script = SubResource( 1 )
+
+[connection signal="screen_entered" from="." to="." method="_on_VisibilityEnabler2D_screen_entered"]
+[connection signal="screen_exited" from="." to="." method="_on_VisibilityEnabler2D_screen_exited"]
